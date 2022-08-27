@@ -52,9 +52,10 @@ class Main:
             if categorys in data_json:
                 for cat in data_json[categorys]:
                     print(cat)
-                #subcategories = input('Enter subcategory: ')
-                    #if subcategories in data_json[categorys]:
-                    urls = data_json[categorys][cat]
+                
+                subcategories = input('Enter subcategory: ')
+                if subcategories in data_json[categorys]:
+                    urls = data_json[categorys][subcategories]
                     new_source = newconect.connect(urls)
                     if new_source:
                         body_table = Table(new_source)
