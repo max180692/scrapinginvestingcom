@@ -41,7 +41,7 @@ class Table:
         print(information[0].text,information[1].text,information[2].text,information[3].text,information[4].text)
         print('+++++',self.inform)
 
-#Вывод информации с сайта
+#Функция вывода если таблица
 
     def output_info_table(self,list_title):
         if len(list_title) == len(self.list_table):
@@ -51,6 +51,8 @@ class Table:
                 list_tag_td = self.list_table[i].find_all('td')
                 all_text = "|".join([tag_td.text.strip() for tag_td in list_tag_td]).replace('|||','\n').replace('||','\n')
                 print(all_text,'\n')
+
+#Вывод информации с сайта
 
     def info_tables(self):
         self.find_table()
