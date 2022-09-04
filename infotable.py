@@ -43,6 +43,15 @@ class Table:
 
 #Вывод информации с сайта
 
+    def output_info_table(self,list_title):
+        if len(list_title) == len(self.list_table):
+            for i in range(len(list_title)):
+                title = list_title[i].text
+                print(title)
+                list_tag_td = self.list_table[i].find_all('td')
+                all_text = "|".join([tag_td.text.strip() for tag_td in list_tag_td]).replace('|||','\n').replace('||','\n')
+                print(all_text,'\n')
+
     def info_tables(self):
         self.find_table()
         if self.inform:
@@ -50,23 +59,10 @@ class Table:
         else:
             if len(self.list_table)>1:
                 list_title = self.soup_body.find_all('h2')
-                if len(list_title) == len(self.list_table):
-                    for i in range(len(list_title)):
-                        title = list_title[i].text
-                        print(title)
-                        list_tag_td = self.list_table[i].find_all('td')
-                        all_text = "|".join([tag_td.text.strip() for tag_td in list_tag_td]).replace('|||','\n').replace('||','\n')
-                        print(all_text,'\n')
+                self.output_info_table(list_title)
             elif len(self.list_table) == 1:
                 list_title = self.soup_body.find_all('h1')
-                if len(list_title) == len(self.list_table):
-                    for i in range(len(list_title)):
-                        title = list_title[i].text
-                        print(title)
-                        list_tag_td = self.list_table[i].find_all('td')
-                        all_text = "|".join([tag_td.text.strip() for tag_td in list_tag_td]).replace('|||','\n').replace('||','\n')
-                        print(all_text,'\n')
-
+                self.output_info_table(list_title)
 
 
 
