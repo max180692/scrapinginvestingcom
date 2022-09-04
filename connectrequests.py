@@ -10,8 +10,8 @@ class NewConnect:
 
 #Подключение с использованием рандомных UserAgent
 
-    def connect(self,url):
-        headers = {'user-agent':self.ua.get_user_agent()}
+    def connect(self,url,mobile=False):
+        headers = {'user-agent':self.ua.get_user_agent(mobile=mobile)}
         response = self.session.get(url,headers=headers)
         if response.status_code == 200:
             return response.text
