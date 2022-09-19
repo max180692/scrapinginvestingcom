@@ -2,6 +2,7 @@ import lxml
 from bs4 import BeautifulSoup as bs
 import json
 import os
+from settingsparser import URL
 
 
 #Класс Category  служит для получения категорий с сайта
@@ -37,7 +38,7 @@ class Category:
         self.__dict_urls = dict()
         if len(list_li) == len(list_ul_main):
             for i in range(len(list_li)):
-                self.__dict_urls[list_li[i]] = {ur.text.lower():'https://ru.investing.com'+ur['href'] for ur in list_ul_main[i]}
+                self.__dict_urls[list_li[i]] = {ur.text.lower():URL+ur['href'] for ur in list_ul_main[i]}
         print(self.__dict_urls)
         self.create_json()
         return self.__dict_urls
